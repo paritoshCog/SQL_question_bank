@@ -26,6 +26,15 @@ ADD CONSTRAINT C_name
  REFERENCES FieldOpsPosition (FieldOpsPositionCode)
  ON DELETE CASCADE;
 
+-- ques 6
+merge into t_location t
+using (select * from location l
+minus
+select * from t_location)
+ON (location.locationcode = t.locationcode)
+when matched then
+update set t.locationcode = l.locationcode, t.locationname = s.locationname,
+t.locationfullname = s.locationfullname, t.siteid = s.siteid, t.statesiteid = s.statesiteid;
 
 
 
