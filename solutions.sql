@@ -18,3 +18,33 @@ ALTER TABLE Person ADD InactiveDate DATETIME;
 DELECT FROM InactiveDate WHERE (EXTRACT(YEAR from SYSDATE)-EXTRACT(YEAR from InactiveDate))>6;
 
 -- qes 5
+-- ON DELETE CASCADE - its a constraint used to specify whether you want rows deleted in a child table when corresponding rows are deleted in the parent table.
+
+ALTER table FieldOpsPosition
+ADD CONSTRAINT C_name
+ FOREIGN KEY (ParentPosition)
+ REFERENCES FieldOpsPosition (FieldOpsPositionCode)
+ ON DELETE CASCADE;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
