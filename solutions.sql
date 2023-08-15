@@ -37,6 +37,9 @@ update set t.locationcode = l.locationcode, t.locationname = s.locationname,
 t.locationfullname = s.locationfullname, t.siteid = s.siteid, t.statesiteid = s.statesiteid;
 
 
+with cte as (select s.locationcode from location l where s.locationcode not in (select locationcode from target_table))
+select count(*) from cte;
+
 
 
 
